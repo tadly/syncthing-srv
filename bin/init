@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+(
+    cd /strelaysrv
+    rm -f stdiscosrv.log
+    strelaysrv $RELAY_ARGS 2>&1 | while read line; do
+        echo "strelaysrv: $line"
+        echo "$line" >> strelaysrv.log
+    done
+) &
+
+(
+    cd /stdiscosrv
+    rm -f stdiscosrv.log
+    stdiscosrv $DISCOVER_ARGS 2>&1 | while read line; do
+        echo "stdiscosrv: $line"
+        echo "$line" >> stdiscosrv.log
+    done
+) &
+
+wait -n
+exit $?
