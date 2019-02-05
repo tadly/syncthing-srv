@@ -33,7 +33,7 @@ VOLUME /stdiscosrv
 EXPOSE 22067
 EXPOSE 8443
 
-COPY bin/init /
+COPY entrypoint.sh /
 
-ENTRYPOINT [ "/init" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
 
