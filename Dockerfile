@@ -1,6 +1,6 @@
 FROM golang:alpine AS builder
 
-ENV PKGVER 1.1.2
+ENV PKGVER 1.1.3
 
 RUN apk add --no-cache ca-certificates curl \
     && mkdir -p /go \
